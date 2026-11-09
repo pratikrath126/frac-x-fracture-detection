@@ -190,6 +190,21 @@ with report_tab:
 
 with info_tab:
     st.header("Model and data")
+    st.markdown("### Dataset used")
+    total_col, train_col, val_col, test_col = st.columns(4)
+    total_col.metric("Total pooled images", "53,846")
+    train_col.metric("Training pool", "43,038")
+    val_col.metric("Validation", "5,403")
+    test_col.metric("Held-out test", "5,405")
+    st.caption("The confusion matrix and pooled test metrics on the dashboard use the 5,405-image test split.")
+    split_rows = [
+        {"Dataset": "FracAtlas", "Train": "4,694", "Validation": "610", "Test": "611", "Total": "5,915"},
+        {"Dataset": "BoneFract", "Train": "38,344", "Validation": "4,793", "Test": "4,794", "Total": "47,931"},
+        {"Dataset": "Combined", "Train": "43,038", "Validation": "5,403", "Test": "5,405", "Total": "53,846"},
+    ]
+    st.dataframe(split_rows, hide_index=True, use_container_width=True)
+    st.markdown("**Training sampling:** the training pool contains 2,347 FracAtlas fracture images (including 1,847 augmented views), 2,347 FracAtlas non-fracture images, 11,192 BoneFract fracture images, and 27,152 BoneFract non-fracture images. Balanced sampling draws 6,000 examples from each of these four groups per epoch (24,000 draws total), with replacement. The full training pool is eligible for sampling, but individual images are not guaranteed to appear in every epoch.")
+    st.markdown("### Model setup")
     st.markdown("**Architecture:** ImageNet-pretrained ResNet-50, fine-tuned on the pooled FracAtlas and BoneFract training partitions.\n\n**Preprocessing:** RGB, 224 × 224, ImageNet mean and standard deviation.\n\n**Validation and model selection:** pooled FracAtlas + BoneFract validation partitions; maximum pooled accuracy selects the threshold.\n\n**Final evaluation:** pooled held-out test partitions. The source-specific breakdown is diagnostic; the model itself is a single pooled classifier.")
     st.markdown("**BoneFract attribution:** Noor & Ali, Mendeley Data v1, CC BY 4.0. [DOI 10.17632/4cr7f2359x.1](https://doi.org/10.17632/4cr7f2359x.1). See the project README for FracAtlas and BoneFract provenance.")
     st.markdown("**Metric note:** accuracy, precision, and fracture recall describe different aspects of performance. The default threshold was selected to maximize accuracy on pooled validation data.")

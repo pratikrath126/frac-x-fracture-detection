@@ -26,6 +26,14 @@ The app loads `artifacts/best_model.pt`, which is included. It supports JPG/JPEG
 
 The full dataset is in the adjacent `../Dataset/` folder, split into `Fracture/` and `Non-Fracture/` (53,846 images). CSV manifests in `outputs/` map each image to its official source and train/validation/test split. Keep `Dataset` beside `Project` when training or reevaluating.
 
+| Data source | Training pool | Validation | Test | Total |
+| --- | ---: | ---: | ---: | ---: |
+| FracAtlas | 4,694 | 610 | 611 | 5,915 |
+| BoneFract | 38,344 | 4,793 | 4,794 | 47,931 |
+| **Combined** | **43,038** | **5,403** | **5,405** | **53,846** |
+
+The model was fitted using the 43,038-image training pool. Balanced sampling draws 6,000 examples from each of the four dataset/class groups per epoch (24,000 draws total), with replacement, so some images may repeat and some may not be drawn during a given epoch. The 5,403-image validation split was used for model/threshold selection; the 5,405-image test split is what the confusion matrix and pooled test metrics summarize.
+
 ```powershell
 python train.py --model resnet50 --epochs 12 --workers 6 --include-bonefract --output-dir artifacts/resnet50_combined
 python measure_training_metrics.py
