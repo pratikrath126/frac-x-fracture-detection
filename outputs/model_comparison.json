@@ -1,0 +1,5 @@
+[
+  {"model": "ResNet-50 · pooled training (selected)", "validation_accuracy": 0.8502683694243939, "fracture_recall": 0.5541666666666667, "roc_auc": 0.8766692601003728, "pr_auc": 0.7879709682821567},
+  {"model": "ConvNeXt-Tiny · pooled training candidate", "validation_accuracy": 0.8473070516379789, "fracture_recall": 0.5680555555555555, "roc_auc": 0.8674513555948076, "pr_auc": 0.7724654974300856},
+  {"model": "ResNet-50 · pooled training, no FracAtlas fine-tuning", "validation_accuracy": 0.8395335924486397, "fracture_recall": 0.5159722222222223, "roc_auc": 0.8437137269745143, "pr_auc": 0.743124248429104}
+]

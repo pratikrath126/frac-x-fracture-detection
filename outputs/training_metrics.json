@@ -1,0 +1,19 @@
+{
+  "split": "pooled_training_posthoc",
+  "sample_count": 43038,
+  "threshold": 0.6641324758529663,
+  "accuracy": 0.8684883126539338,
+  "precision": 0.9022771367303176,
+  "fracture_recall_sensitivity": 0.6526331339094468,
+  "confusion_matrix_labels_0_1": [
+    [
+      28542,
+      957
+    ],
+    [
+      4703,
+      8836
+    ]
+  ],
+  "note": "Measured after training on the training pool; an in-sample diagnostic, not a generalization estimate."
+}

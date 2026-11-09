@@ -1,0 +1,72 @@
+[
+  {
+    "epoch": 1,
+    "train_loss": 0.5688524610231009,
+    "validation_loss": 0.47165612310244215,
+    "validation_roc_auc": 0.789927050915412,
+    "validation_pr_auc": 0.6600270071000038
+  },
+  {
+    "epoch": 2,
+    "train_loss": 0.5150880597247742,
+    "validation_loss": 0.49361691127617247,
+    "validation_roc_auc": 0.7897086242184653,
+    "validation_pr_auc": 0.6685064808246662
+  },
+  {
+    "epoch": 3,
+    "train_loss": 0.3815416841909641,
+    "validation_loss": 0.44042882398333677,
+    "validation_roc_auc": 0.8437137269745143,
+    "validation_pr_auc": 0.743124248429104
+  },
+  {
+    "epoch": 4,
+    "train_loss": 0.29632721983584465,
+    "validation_loss": 0.4920903515846509,
+    "validation_roc_auc": 0.8566836992177642,
+    "validation_pr_auc": 0.7561933806821948
+  },
+  {
+    "epoch": 5,
+    "train_loss": 0.26161522406207055,
+    "validation_loss": 0.4108497611141322,
+    "validation_roc_auc": 0.87441454986402,
+    "validation_pr_auc": 0.7865905711572052
+  },
+  {
+    "epoch": 6,
+    "train_loss": 0.24270260461208287,
+    "validation_loss": 0.39540430541837235,
+    "validation_roc_auc": 0.8766692601003728,
+    "validation_pr_auc": 0.7879709682821567
+  },
+  {
+    "epoch": 7,
+    "train_loss": 0.2259669003777926,
+    "validation_loss": 0.4109483697969549,
+    "validation_roc_auc": 0.8736443175764713,
+    "validation_pr_auc": 0.7864856525972794
+  },
+  {
+    "epoch": 8,
+    "train_loss": 0.21913922733095448,
+    "validation_loss": 0.39803196640187216,
+    "validation_roc_auc": 0.8741576597414978,
+    "validation_pr_auc": 0.7820409421032131
+  },
+  {
+    "epoch": 9,
+    "train_loss": 0.19919473229818435,
+    "validation_loss": 0.4052791420441623,
+    "validation_roc_auc": 0.8785898028990383,
+    "validation_pr_auc": 0.7959415496786388
+  },
+  {
+    "epoch": 10,
+    "train_loss": 0.19348269295870538,
+    "validation_loss": 0.43917444012934637,
+    "validation_roc_auc": 0.8769347365912469,
+    "validation_pr_auc": 0.7974820901634111
+  }
+]

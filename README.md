@@ -1,0 +1,49 @@
+# FRAC-X | Fracture X-ray Demo
+
+A Streamlit classroom demo for a single pooled fracture classifier. The selected ImageNet-pretrained ResNet-50 uses pooled FracAtlas and BoneFract training data. Model selection and the default decision threshold are based on pooled validation accuracy.
+
+## Run locally
+
+Use Python 3.11 or newer. Install the dependencies and launch the app:
+
+```powershell
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+streamlit run app.py
+```
+
+The app loads `artifacts/best_model.pt`, which is included. It supports JPG/JPEG/PNG uploads, a live threshold slider, the fracture score and class prediction, and a Grad-CAM overlay. The performance dashboard includes pooled test metrics, confusion matrix, ROC curve, training/validation loss curves, candidate comparison, and a per-source diagnostic breakdown.
+
+## Deploy on Streamlit Community Cloud
+
+1. Put the contents of this `Project` folder at the root of a GitHub repository. Keep `app.py`, `requirements.txt`, `.streamlit/config.toml`, `src/`, `artifacts/best_model.pt`, and the report JSON files together.
+2. In Streamlit Community Cloud, create an app for that repository and select `app.py` as the entrypoint. Select Python 3.11 in the deployment's advanced settings.
+3. The image dataset is intentionally kept out of the app repository. Live prediction uses the included checkpoint and does not need the training/test images.
+
+## Reproduce training and evaluation locally
+
+The full dataset is in the adjacent `../Dataset/` folder, split into `Fracture/` and `Non-Fracture/` (53,846 images). CSV manifests in `outputs/` map each image to its official source and train/validation/test split. Keep `Dataset` beside `Project` when training or reevaluating.
+
+```powershell
+python train.py --model resnet50 --epochs 12 --workers 6 --include-bonefract --output-dir artifacts/resnet50_combined
+python measure_training_metrics.py
+python evaluate.py --include-bonefract --checkpoint artifacts/best_model.pt --output outputs/test_metrics.json
+```
+
+Training balances four source/class groups during sampling. Validation and test partitions remain separate from training. The final app checkpoint was selected on pooled validation. The FracAtlas test portion was viewed during earlier development, so it is not a pristine independent benchmark; BoneFract test remained held out.
+
+## Current pooled test results
+
+On 5,405 pooled test images, the selected checkpoint achieved **85.3% accuracy**, **83.2% precision**, **59.0% fracture recall**, **0.691 F1**, and **0.874 ROC-AUC** at threshold 0.664. It detected 888 of 1,504 fractures and missed 616. The test dataset mix is dominated by BoneFract; see `outputs/test_metrics.json` for details. Higher accuracy does not mean all fractures are detected.
+
+The completed run logged train/validation loss, validation ROC-AUC/PR-AUC, and epoch count. A separate post-hoc pass measured **86.8% training-pool accuracy** at the selected threshold; this is an in-sample diagnostic, not a generalization estimate. The training run did not record elapsed training time, so the app reports it as unavailable.
+
+## Project scope from the FRAC-X plan
+
+The demo follows the plan's transfer-learning, image-upload, confidence-score, Grad-CAM, test metrics, confusion matrix, ROC, and false-positive/false-negative reporting goals. A pretrained ResNet-50 was selected for the simple integrated project; no scratch baseline CNN or separate attention model is included. The app is an academic prototype, not a medical diagnostic tool.
+
+## Dataset attribution
+
+BoneFract: Noor, R. & Ali, A. (2026), *BoneFract: A Bone Fracture Dataset*, Mendeley Data v1, CC BY 4.0, [DOI 10.17632/4cr7f2359x.1](https://doi.org/10.17632/4cr7f2359x.1). Review each dataset's terms before redistributing its images. Dataset images are not included in this repository package.

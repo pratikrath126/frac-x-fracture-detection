@@ -1,0 +1,17 @@
+{
+  "split": "pooled_validation",
+  "sample_count": 5403,
+  "threshold": 0.6641324758529663,
+  "accuracy": 0.8502683694243939,
+  "precision": 0.8269430051813471,
+  "fracture_recall_sensitivity": 0.5541666666666667,
+  "specificity": 0.9578602069134494,
+  "f1": 0.6636174636174636,
+  "roc_auc": 0.8766692601003728,
+  "pr_auc": 0.7879709682821567,
+  "confusion_matrix_labels_0_1": [[3796, 167], [642, 798]],
+  "per_dataset": {
+    "FracAtlas": {"sample_count": 610, "accuracy": 0.8852459016393442, "fracture_recall_sensitivity": 0.5046728971962616, "specificity": 0.9662027833001988, "roc_auc": 0.9015068467698483, "pr_auc": 0.7391978766235334},
+    "BoneFract": {"sample_count": 4793, "accuracy": 0.8458168161902775, "fracture_recall_sensitivity": 0.5581395348837209, "specificity": 0.9566473988439307, "roc_auc": 0.8754174815380146, "pr_auc": 0.7939264136295103}
+  }
+}

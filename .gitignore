@@ -1,0 +1,11 @@
+__pycache__/
+*.py[cod]
+.venv/
+.streamlit/secrets.toml
+# Keep the selected checkpoint for deployment; omit experimental weights.
+artifacts/*.pt
+!artifacts/best_model.pt
+# The local multi-gigabyte dataset stays beside Project, not in the app repository.
+outputs/dataset_manifest.csv
+outputs/*_processed.csv
+outputs/bonefract_*.csv
