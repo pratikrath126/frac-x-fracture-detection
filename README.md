@@ -36,9 +36,9 @@ Training balances four source/class groups during sampling. Validation and test 
 
 ## Current pooled test results
 
-On 5,405 pooled test images, the selected checkpoint achieved **85.3% accuracy**, **83.2% precision**, **59.0% fracture recall**, **0.691 F1**, and **0.874 ROC-AUC** at threshold 0.664. It detected 888 of 1,504 fractures and missed 616. The test dataset mix is dominated by BoneFract; see `outputs/test_metrics.json` for details. Higher accuracy does not mean all fractures are detected.
+On 5,405 pooled test images, the selected checkpoint recorded **85.3% accuracy**, **83.2% precision**, **59.0% fracture recall**, **0.691 F1**, and **0.874 ROC-AUC** at threshold 0.664. The test set contains both datasets, with BoneFract contributing most images. The full pooled and per-source metrics are in `outputs/test_metrics.json`.
 
-The completed run logged train/validation loss, validation ROC-AUC/PR-AUC, and epoch count. A separate post-hoc pass measured **86.8% training-pool accuracy** at the selected threshold; this is an in-sample diagnostic, not a generalization estimate. The training run did not record elapsed training time, so the app reports it as unavailable.
+The completed run logged train/validation loss, validation ROC-AUC/PR-AUC, and epoch count. A post-training calculation recorded **86.8% accuracy on the training pool** at the selected threshold. This value is shown separately from held-out metrics. Epoch-wise training accuracy and elapsed training time were not recorded for this run.
 
 ## Project scope from the FRAC-X plan
 

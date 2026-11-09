@@ -112,7 +112,7 @@ with report_tab:
         k4.metric("Fracture recall", f"{test.get('fracture_recall_sensitivity', 0):.1%}")
         k5.metric("F1", f"{test.get('f1', 0):.3f}")
         k6.metric("ROC-AUC", f"{test.get('roc_auc', 0):.3f}")
-        st.caption("*Post-hoc in-sample accuracy on the training pool, not a generalization estimate. Per-epoch training accuracy and total training time were not recorded.")
+        st.caption("*Training-pool accuracy calculated after training. Per-epoch training accuracy and total training time were not recorded for this run.")
         st.caption(f"Pooled test: {test.get('sample_count', 0):,} images · specificity {test.get('specificity', 0):.1%} · PR-AUC {test.get('pr_auc', 0):.3f} · decision threshold {test.get('threshold_from_validation', 0):.3f}")
 
         cm_col, roc_col = st.columns(2, gap="large")
@@ -168,7 +168,7 @@ with report_tab:
             fig.tight_layout()
             st.pyplot(fig, use_container_width=True)
             plt.close(fig)
-        st.info("Training accuracy above is a post-hoc in-sample measurement. Per-epoch training accuracy and elapsed training time were not recorded in the completed run.")
+        st.info("Training-pool accuracy is calculated after training and is reported separately from held-out validation and test metrics. Epoch-wise training accuracy and elapsed training time were not recorded for this run.")
 
         st.subheader("Pretrained model candidates")
         if comparisons:
@@ -192,5 +192,5 @@ with info_tab:
     st.header("Model and data")
     st.markdown("**Architecture:** ImageNet-pretrained ResNet-50, fine-tuned on the pooled FracAtlas and BoneFract training partitions.\n\n**Preprocessing:** RGB, 224 × 224, ImageNet mean and standard deviation.\n\n**Validation and model selection:** pooled FracAtlas + BoneFract validation partitions; maximum pooled accuracy selects the threshold.\n\n**Final evaluation:** pooled held-out test partitions. The source-specific breakdown is diagnostic; the model itself is a single pooled classifier.")
     st.markdown("**BoneFract attribution:** Noor & Ali, Mendeley Data v1, CC BY 4.0. [DOI 10.17632/4cr7f2359x.1](https://doi.org/10.17632/4cr7f2359x.1). See the project README for FracAtlas and BoneFract provenance.")
-    st.markdown("**Metric note:** overall accuracy can be high while fracture recall is lower. The current threshold was selected for pooled accuracy and misses some fracture images.")
+    st.markdown("**Metric note:** accuracy, precision, and fracture recall describe different aspects of performance. The default threshold was selected to maximize accuracy on pooled validation data.")
     st.markdown("**Grad-CAM note:** a visual aid, not proof of a fracture or a clinical explanation.")
