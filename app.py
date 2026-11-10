@@ -54,6 +54,7 @@ def get_reports():
 
 
 test, history, valid, comparisons, training = get_reports()
+trials = read_json("outputs/local_model_trials.json", {})
 if not CHECKPOINT.is_file():
     st.error("The trained checkpoint is missing: artifacts/best_model.pt")
     st.stop()
@@ -176,6 +177,89 @@ with report_tab:
                          column_config={key: st.column_config.NumberColumn(format="%.1%") for key in ["validation_accuracy", "fracture_recall"]})
         else:
             st.info("Candidate comparison results are unavailable.")
+
+        st.subheader("Model trials on pooled validation")
+        if trials.get("candidates"):
+            st.info(
+                "This comparison includes the local architecture and ensemble experiments. "
+                "The live predictor above still uses the single ResNet-50 checkpoint. "
+                "All candidates below are compared on pooled FracAtlas + BoneFract validation data; "
+                "available test-sweep results are listed separately below."
+            )
+            trial_rows = []
+            for candidate in trials["candidates"]:
+                point = candidate["recall_targets"]["80"]
+                trial_rows.append({
+                    "Candidate": candidate["name"],
+                    "Type": candidate["kind"],
+                    "Validation accuracy": point["accuracy"],
+                    "Fracture recall": point["recall"],
+                    "Precision": point["precision"],
+                    "Specificity": point["specificity"],
+                    "F1": point["f1"],
+                    "ROC-AUC": candidate["validation_roc_auc"],
+                })
+            st.dataframe(
+                trial_rows,
+                hide_index=True,
+                use_container_width=True,
+                column_config={
+                    key: st.column_config.NumberColumn(format="%.1%")
+                    for key in ["Validation accuracy", "Fracture recall", "Precision", "Specificity", "F1"]
+                } | {"ROC-AUC": st.column_config.NumberColumn(format="%.3f")},
+            )
+            st.caption(
+                f"Validation set: {trials.get('validation_count', 0):,} pooled images. "
+                "All candidates use their validation-selected 80%-recall operating point for this comparison. "
+                "These are model-selection results, not an independent final estimate."
+            )
+
+            selected_test = trials.get("selected_ensemble_test", {})
+            test_candidates = trials.get("pooled_test_candidates", [])
+            if test_candidates:
+                st.subheader("Recorded pooled test results from local trials")
+                st.caption(
+                    "The live predictor still uses the single ResNet-50 checkpoint. These local trial scores use "
+                    "thresholds selected on pooled validation data, then evaluated on the same pooled test split. "
+                    "Only candidates with saved test-sweep results appear below."
+                )
+                test_rows = []
+                for candidate in test_candidates:
+                    point = candidate["recall_targets"]["80"]
+                    cm = point["confusion_matrix"]
+                    missed = int(cm[1][0])
+                    fracture_count = int(cm[1][0] + cm[1][1])
+                    test_rows.append({
+                        "Candidate": candidate["name"],
+                        "Type": candidate["kind"],
+                        "Threshold": point["threshold_from_validation"],
+                        "Test accuracy": point["accuracy"],
+                        "Test fracture recall": point["fracture_recall"],
+                        "Precision": point["precision"],
+                        "Specificity": point["specificity"],
+                        "F1": point["f1"],
+                        "Test ROC-AUC": candidate["test_roc_auc"],
+                        "Missed fractures": f"{missed:,} / {fracture_count:,}",
+                    })
+                st.dataframe(
+                    test_rows,
+                    hide_index=True,
+                    use_container_width=True,
+                    column_config={
+                        key: st.column_config.NumberColumn(format="%.1%")
+                        for key in ["Test accuracy", "Test fracture recall", "Precision", "Specificity", "F1"]
+                    } | {
+                        "Threshold": st.column_config.NumberColumn(format="%.3f"),
+                        "Test ROC-AUC": st.column_config.NumberColumn(format="%.3f"),
+                    },
+                )
+                st.caption(f"Pooled test set: {selected_test.get('sample_count', 0):,} images.")
+                st.caption(
+                    "FracAtlas test images were viewed during earlier development; these exploratory results "
+                    "are not a fresh independent estimate of general performance."
+                )
+        else:
+            st.info("Local model trial results are not available in this deployment.")
 
         st.subheader("Pooled test breakdown")
         source_rows = []

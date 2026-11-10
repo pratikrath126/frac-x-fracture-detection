@@ -1,0 +1,933 @@
+{
+  "title": "Local model trial comparison",
+  "validation_count": 5403,
+  "validation_source": "Pooled FracAtlas + BoneFract validation split",
+  "comparison_note": "Candidate values are pooled validation results at thresholds chosen to target the specified fracture-recall level. Pooled test metrics are shown only for candidates with saved recall-sweep test outputs; these exploratory results must not be treated as an untouched final test.",
+  "candidates": [
+    {
+      "name": "ResNet-50",
+      "kind": "Single model",
+      "validation_roc_auc": 0.8768611391482323,
+      "recall_targets": {
+        "70": {
+          "threshold": 0.4950459897518158,
+          "accuracy": 0.8384230982787341,
+          "precision": 0.6956521739130435,
+          "recall": 0.7,
+          "specificity": 0.8887206661619985,
+          "f1": 0.6978193146417445,
+          "confusion_matrix": [
+            [
+              3522,
+              441
+            ],
+            [
+              432,
+              1008
+            ]
+          ]
+        },
+        "80": {
+          "threshold": 0.3724078834056854,
+          "accuracy": 0.787340366463076,
+          "precision": 0.5722801788375559,
+          "recall": 0.8,
+          "specificity": 0.7827403482210447,
+          "f1": 0.6672458731537794,
+          "confusion_matrix": [
+            [
+              3102,
+              861
+            ],
+            [
+              288,
+              1152
+            ]
+          ]
+        },
+        "90": {
+          "threshold": 0.24946895241737366,
+          "accuracy": 0.6814732555987414,
+          "precision": 0.4510964148973199,
+          "recall": 0.9,
+          "specificity": 0.6020691395407519,
+          "f1": 0.6009738001391143,
+          "confusion_matrix": [
+            [
+              2386,
+              1577
+            ],
+            [
+              144,
+              1296
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "name": "ConvNeXt-Tiny",
+      "kind": "Single model",
+      "validation_roc_auc": 0.8674515308268147,
+      "recall_targets": {
+        "70": {
+          "threshold": 0.5203850269317627,
+          "accuracy": 0.8169535443272257,
+          "precision": 0.6440894568690095,
+          "recall": 0.7,
+          "specificity": 0.8594499116830684,
+          "f1": 0.6708818635607321,
+          "confusion_matrix": [
+            [
+              3406,
+              557
+            ],
+            [
+              432,
+              1008
+            ]
+          ]
+        },
+        "80": {
+          "threshold": 0.3366745114326477,
+          "accuracy": 0.7629094947251527,
+          "precision": 0.5370629370629371,
+          "recall": 0.8,
+          "specificity": 0.7494322482967449,
+          "f1": 0.6426778242677824,
+          "confusion_matrix": [
+            [
+              2970,
+              993
+            ],
+            [
+              288,
+              1152
+            ]
+          ]
+        },
+        "90": {
+          "threshold": 0.16024239361286163,
+          "accuracy": 0.6507495835646863,
+          "precision": 0.42645607107601186,
+          "recall": 0.9,
+          "specificity": 0.5601816805450416,
+          "f1": 0.578700602813128,
+          "confusion_matrix": [
+            [
+              2220,
+              1743
+            ],
+            [
+              144,
+              1296
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "name": "ResNet-50 \u00b7 positive-class weighted",
+      "kind": "Single model",
+      "validation_roc_auc": 0.8814091106625171,
+      "recall_targets": {
+        "70": {
+          "threshold": 0.6012586355209351,
+          "accuracy": 0.8391634277253378,
+          "precision": 0.6975778546712803,
+          "recall": 0.7,
+          "specificity": 0.8897300025233409,
+          "f1": 0.698786828422877,
+          "confusion_matrix": [
+            [
+              3526,
+              437
+            ],
+            [
+              432,
+              1008
+            ]
+          ]
+        },
+        "80": {
+          "threshold": 0.47743040323257446,
+          "accuracy": 0.7952989080140662,
+          "precision": 0.584771573604061,
+          "recall": 0.8,
+          "specificity": 0.7935907141054757,
+          "f1": 0.6756598240469208,
+          "confusion_matrix": [
+            [
+              3145,
+              818
+            ],
+            [
+              288,
+              1152
+            ]
+          ]
+        },
+        "90": {
+          "threshold": 0.3313373923301697,
+          "accuracy": 0.6933185267444013,
+          "precision": 0.461374154503382,
+          "recall": 0.9,
+          "specificity": 0.6182185213222307,
+          "f1": 0.6100258884443398,
+          "confusion_matrix": [
+            [
+              2450,
+              1513
+            ],
+            [
+              144,
+              1296
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "name": "EfficientNet-B0",
+      "kind": "Single model",
+      "validation_roc_auc": 0.8209295357052738,
+      "recall_targets": {
+        "70": {
+          "threshold": 0.3642691969871521,
+          "accuracy": 0.7593929298537849,
+          "precision": 0.5373134328358209,
+          "recall": 0.7,
+          "specificity": 0.7809740095886955,
+          "f1": 0.6079613992762364,
+          "confusion_matrix": [
+            [
+              3095,
+              868
+            ],
+            [
+              432,
+              1008
+            ]
+          ]
+        },
+        "80": {
+          "threshold": 0.2769387662410736,
+          "accuracy": 0.6951693503609107,
+          "precision": 0.45878136200716846,
+          "recall": 0.8,
+          "specificity": 0.6570779712339136,
+          "f1": 0.5831435079726651,
+          "confusion_matrix": [
+            [
+              2604,
+              1359
+            ],
+            [
+              288,
+              1152
+            ]
+          ]
+        },
+        "90": {
+          "threshold": 0.17124919593334198,
+          "accuracy": 0.557838238015917,
+          "precision": 0.3659983055634002,
+          "recall": 0.9,
+          "specificity": 0.43350996719656826,
+          "f1": 0.5203774342501506,
+          "confusion_matrix": [
+            [
+              1718,
+              2245
+            ],
+            [
+              144,
+              1296
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "name": "ResNet-50 + ConvNeXt-Tiny",
+      "kind": "2-model ensemble",
+      "validation_roc_auc": 0.8837531892225307,
+      "recall_targets": {
+        "70": {
+          "threshold": 0.5155178308486938,
+          "accuracy": 0.8393485100869887,
+          "precision": 0.6980609418282548,
+          "recall": 0.7,
+          "specificity": 0.8899823366136765,
+          "f1": 0.6990291262135923,
+          "confusion_matrix": [
+            [
+              3527,
+              436
+            ],
+            [
+              432,
+              1008
+            ]
+          ]
+        },
+        "80": {
+          "threshold": 0.3795430362224579,
+          "accuracy": 0.7934480843975569,
+          "precision": 0.5818181818181818,
+          "recall": 0.8,
+          "specificity": 0.7910673732021196,
+          "f1": 0.6736842105263158,
+          "confusion_matrix": [
+            [
+              3135,
+              828
+            ],
+            [
+              288,
+              1152
+            ]
+          ]
+        },
+        "90": {
+          "threshold": 0.23963019251823425,
+          "accuracy": 0.6929483620210994,
+          "precision": 0.4610458911419424,
+          "recall": 0.9,
+          "specificity": 0.6177138531415595,
+          "f1": 0.6097388849682428,
+          "confusion_matrix": [
+            [
+              2448,
+              1515
+            ],
+            [
+              144,
+              1296
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "name": "ResNet-50 + cost-sensitive ResNet-50",
+      "kind": "2-model ensemble",
+      "validation_roc_auc": 0.880338793562677,
+      "recall_targets": {
+        "70": {
+          "threshold": 0.5469878315925598,
+          "accuracy": 0.8395335924486397,
+          "precision": 0.6985446985446986,
+          "recall": 0.7,
+          "specificity": 0.8902346707040121,
+          "f1": 0.6992715920915713,
+          "confusion_matrix": [
+            [
+              3528,
+              435
+            ],
+            [
+              432,
+              1008
+            ]
+          ]
+        },
+        "80": {
+          "threshold": 0.42586565017700195,
+          "accuracy": 0.7910420136960947,
+          "precision": 0.5780230807827396,
+          "recall": 0.8,
+          "specificity": 0.7877870300277567,
+          "f1": 0.6711331197203612,
+          "confusion_matrix": [
+            [
+              3122,
+              841
+            ],
+            [
+              288,
+              1152
+            ]
+          ]
+        },
+        "90": {
+          "threshold": 0.29221343994140625,
+          "accuracy": 0.6896168795113826,
+          "precision": 0.45811240721102864,
+          "recall": 0.9,
+          "specificity": 0.6131718395155186,
+          "f1": 0.607167955024596,
+          "confusion_matrix": [
+            [
+              2430,
+              1533
+            ],
+            [
+              144,
+              1296
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "name": "ResNet-50 + ConvNeXt-Tiny + cost-sensitive ResNet-50",
+      "kind": "3-model ensemble",
+      "validation_roc_auc": 0.8861759469537667,
+      "recall_targets": {
+        "70": {
+          "threshold": 0.54476398229599,
+          "accuracy": 0.8436054044049602,
+          "precision": 0.7093596059113301,
+          "recall": 0.7,
+          "specificity": 0.8957860206913955,
+          "f1": 0.7046487242222998,
+          "confusion_matrix": [
+            [
+              3550,
+              413
+            ],
+            [
+              432,
+              1008
+            ]
+          ]
+        },
+        "80": {
+          "threshold": 0.4166569709777832,
+          "accuracy": 0.7997408846936886,
+          "precision": 0.591983556012333,
+          "recall": 0.8,
+          "specificity": 0.7996467322735301,
+          "f1": 0.6804489072652097,
+          "confusion_matrix": [
+            [
+              3169,
+              794
+            ],
+            [
+              288,
+              1152
+            ]
+          ]
+        },
+        "90": {
+          "threshold": 0.28183186054229736,
+          "accuracy": 0.7068295391449195,
+          "precision": 0.47368421052631576,
+          "recall": 0.9,
+          "specificity": 0.6366389099167298,
+          "f1": 0.6206896551724138,
+          "confusion_matrix": [
+            [
+              2523,
+              1440
+            ],
+            [
+              144,
+              1296
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "name": "Four-model ensemble (includes EfficientNet-B0)",
+      "kind": "4-model ensemble",
+      "validation_roc_auc": 0.8838088253848094,
+      "recall_targets": {
+        "70": {
+          "threshold": 0.5095144510269165,
+          "accuracy": 0.8447158985748658,
+          "precision": 0.7123674911660778,
+          "recall": 0.7,
+          "specificity": 0.897300025233409,
+          "f1": 0.7061295971978985,
+          "confusion_matrix": [
+            [
+              3556,
+              407
+            ],
+            [
+              432,
+              1008
+            ]
+          ]
+        },
+        "80": {
+          "threshold": 0.4038712680339813,
+          "accuracy": 0.8049231908199148,
+          "precision": 0.6006256517205423,
+          "recall": 0.8,
+          "specificity": 0.806712086802927,
+          "f1": 0.6861226920786182,
+          "confusion_matrix": [
+            [
+              3197,
+              766
+            ],
+            [
+              288,
+              1152
+            ]
+          ]
+        },
+        "90": {
+          "threshold": 0.2674417197704315,
+          "accuracy": 0.6933185267444013,
+          "precision": 0.461374154503382,
+          "recall": 0.9,
+          "specificity": 0.6182185213222307,
+          "f1": 0.6100258884443398,
+          "confusion_matrix": [
+            [
+              2450,
+              1513
+            ],
+            [
+              144,
+              1296
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "name": "ResNet-50 + ConvNeXt-Tiny + EfficientNet-B0",
+      "kind": "3-model ensemble",
+      "validation_roc_auc": 0.879753343426697,
+      "recall_targets": {
+        "70": {
+          "threshold": 0.4806753098964691,
+          "accuracy": 0.8402739218952434,
+          "precision": 0.700486448922863,
+          "recall": 0.7,
+          "specificity": 0.8912440070653546,
+          "f1": 0.7002431399791594,
+          "confusion_matrix": [
+            [
+              3532,
+              431
+            ],
+            [
+              432,
+              1008
+            ]
+          ]
+        },
+        "80": {
+          "threshold": 0.3713986873626709,
+          "accuracy": 0.798630390523783,
+          "precision": 0.5901639344262295,
+          "recall": 0.8,
+          "specificity": 0.7981327277315166,
+          "f1": 0.6792452830188679,
+          "confusion_matrix": [
+            [
+              3163,
+              800
+            ],
+            [
+              288,
+              1152
+            ]
+          ]
+        },
+        "90": {
+          "threshold": 0.24062210321426392,
+          "accuracy": 0.6849898204701091,
+          "precision": 0.45409950946040645,
+          "recall": 0.9,
+          "specificity": 0.6068634872571285,
+          "f1": 0.6036329762459245,
+          "confusion_matrix": [
+            [
+              2405,
+              1558
+            ],
+            [
+              144,
+              1296
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "name": "ResNet-50 with horizontal-flip TTA",
+      "kind": "Single model + test-time augmentation",
+      "validation_roc_auc": 0.8765392379510473,
+      "recall_targets": {
+        "70": {
+          "threshold": 0.48787158727645874,
+          "accuracy": 0.8371275217471775,
+          "precision": 0.6923076923076923,
+          "recall": 0.7,
+          "specificity": 0.8869543275296492,
+          "f1": 0.6961325966850829,
+          "confusion_matrix": [
+            [
+              3515,
+              448
+            ],
+            [
+              432,
+              1008
+            ]
+          ]
+        },
+        "80": {
+          "threshold": 0.37888699769973755,
+          "accuracy": 0.7836387192300573,
+          "precision": 0.5666502705361535,
+          "recall": 0.8,
+          "specificity": 0.7776936664143326,
+          "f1": 0.6634033976389289,
+          "confusion_matrix": [
+            [
+              3082,
+              881
+            ],
+            [
+              288,
+              1152
+            ]
+          ]
+        },
+        "90": {
+          "threshold": 0.2525636553764343,
+          "accuracy": 0.6738848787710531,
+          "precision": 0.4447494852436513,
+          "recall": 0.9,
+          "specificity": 0.5917234418369922,
+          "f1": 0.5953146531924667,
+          "confusion_matrix": [
+            [
+              2345,
+              1618
+            ],
+            [
+              144,
+              1296
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "selected_ensemble_test": {
+    "sample_count": 5405,
+    "roc_auc": 0.882456830490818,
+    "pr_auc": 0.8032958511664486,
+    "operating_points": {
+      "70": {
+        "threshold_from_validation": 0.5095144510269165,
+        "accuracy": 0.8392229417206291,
+        "fracture_recall": 0.7081117021276596,
+        "precision": 0.7123745819397993,
+        "specificity": 0.8897718533709306,
+        "f1": 0.7102367455818607,
+        "false_negatives": 439,
+        "fractures": 1504,
+        "confusion_matrix": [
+          [
+            3471,
+            430
+          ],
+          [
+            439,
+            1065
+          ]
+        ]
+      },
+      "80": {
+        "threshold_from_validation": 0.4038712680339813,
+        "accuracy": 0.795004625346901,
+        "fracture_recall": 0.7872340425531915,
+        "precision": 0.6004056795131846,
+        "specificity": 0.7980005126890541,
+        "f1": 0.6812428078250863,
+        "false_negatives": 320,
+        "fractures": 1504,
+        "confusion_matrix": [
+          [
+            3113,
+            788
+          ],
+          [
+            320,
+            1184
+          ]
+        ]
+      },
+      "90": {
+        "threshold_from_validation": 0.2674417197704315,
+        "accuracy": 0.6976873265494912,
+        "fracture_recall": 0.894281914893617,
+        "precision": 0.4769503546099291,
+        "specificity": 0.6218918226095873,
+        "f1": 0.622109158186864,
+        "false_negatives": 159,
+        "fractures": 1504,
+        "confusion_matrix": [
+          [
+            2426,
+            1475
+          ],
+          [
+            159,
+            1345
+          ]
+        ]
+      }
+    }
+  },
+  "candidate_count": 10,
+  "pooled_test_candidates": [
+    {
+      "name": "ResNet-50 \u00b7 recall-sweep run",
+      "kind": "Single model",
+      "test_roc_auc": 0.8737687281493561,
+      "recall_targets": {
+        "70": {
+          "threshold_from_validation": 0.4948643445968628,
+          "accuracy": 0.8338575393154487,
+          "precision": 0.6998680738786279,
+          "specificity": 0.8833632401948218,
+          "f1": 0.7026490066225165,
+          "confusion_matrix": [
+            [
+              3446,
+              455
+            ],
+            [
+              443,
+              1061
+            ]
+          ],
+          "fracture_recall": 0.7054521276595744
+        },
+        "80": {
+          "threshold_from_validation": 0.37312960624694824,
+          "accuracy": 0.7807585568917669,
+          "precision": 0.5767195767195767,
+          "specificity": 0.7744168162009741,
+          "f1": 0.6692715601451298,
+          "confusion_matrix": [
+            [
+              3021,
+              880
+            ],
+            [
+              305,
+              1199
+            ]
+          ],
+          "fracture_recall": 0.7972074468085106
+        },
+        "90": {
+          "threshold_from_validation": 0.24778135120868683,
+          "accuracy": 0.681036077705828,
+          "precision": 0.4620951068228808,
+          "specificity": 0.5998461932837734,
+          "f1": 0.6087153881071267,
+          "confusion_matrix": [
+            [
+              2340,
+              1561
+            ],
+            [
+              163,
+              1341
+            ]
+          ],
+          "fracture_recall": 0.8916223404255319
+        }
+      }
+    },
+    {
+      "name": "ResNet-50 with horizontal-flip TTA",
+      "kind": "Test-time augmentation",
+      "test_roc_auc": 0.8740451848134958,
+      "recall_targets": {
+        "70": {
+          "threshold_from_validation": 0.48787158727645874,
+          "accuracy": 0.828677150786309,
+          "precision": 0.6843112244897959,
+          "specificity": 0.8731094591130479,
+          "f1": 0.6985677083333334,
+          "confusion_matrix": [
+            [
+              3406,
+              495
+            ],
+            [
+              431,
+              1073
+            ]
+          ],
+          "fracture_recall": 0.7134308510638298
+        },
+        "80": {
+          "threshold_from_validation": 0.37888699769973755,
+          "accuracy": 0.7820536540240518,
+          "precision": 0.5782149712092131,
+          "specificity": 0.7746731607280185,
+          "f1": 0.6716833890746934,
+          "confusion_matrix": [
+            [
+              3022,
+              879
+            ],
+            [
+              299,
+              1205
+            ]
+          ],
+          "fracture_recall": 0.8011968085106383
+        },
+        "90": {
+          "threshold_from_validation": 0.2525636553764343,
+          "accuracy": 0.6769657724329324,
+          "precision": 0.4585332419465387,
+          "specificity": 0.5949756472699308,
+          "f1": 0.6051560379918589,
+          "confusion_matrix": [
+            [
+              2321,
+              1580
+            ],
+            [
+              166,
+              1338
+            ]
+          ],
+          "fracture_recall": 0.8896276595744681
+        }
+      }
+    },
+    {
+      "name": "ResNet-50 + ConvNeXt-Tiny \u00b7 recall-sweep run",
+      "kind": "2-model ensemble",
+      "test_roc_auc": 0.8820752112115279,
+      "recall_targets": {
+        "70": {
+          "threshold_from_validation": 0.5140519142150879,
+          "accuracy": 0.8340425531914893,
+          "precision": 0.7027388109552438,
+          "specificity": 0.8859266854652653,
+          "f1": 0.7010996334555148,
+          "confusion_matrix": [
+            [
+              3456,
+              445
+            ],
+            [
+              452,
+              1052
+            ]
+          ],
+          "fracture_recall": 0.699468085106383
+        },
+        "80": {
+          "threshold_from_validation": 0.3791937232017517,
+          "accuracy": 0.7872340425531915,
+          "precision": 0.585838991270611,
+          "specificity": 0.7810817739041271,
+          "f1": 0.6775098149186763,
+          "confusion_matrix": [
+            [
+              3047,
+              854
+            ],
+            [
+              296,
+              1208
+            ]
+          ],
+          "fracture_recall": 0.8031914893617021
+        },
+        "90": {
+          "threshold_from_validation": 0.23944520950317383,
+          "accuracy": 0.6971322849213691,
+          "precision": 0.47649346058677977,
+          "specificity": 0.6203537554473212,
+          "f1": 0.6222017078236788,
+          "confusion_matrix": [
+            [
+              2420,
+              1481
+            ],
+            [
+              156,
+              1348
+            ]
+          ],
+          "fracture_recall": 0.8962765957446809
+        }
+      }
+    },
+    {
+      "name": "Four-model ensemble (includes EfficientNet-B0)",
+      "kind": "4-model ensemble",
+      "test_roc_auc": 0.882456830490818,
+      "recall_targets": {
+        "70": {
+          "threshold_from_validation": 0.5095144510269165,
+          "accuracy": 0.8392229417206291,
+          "precision": 0.7123745819397993,
+          "fracture_recall": 0.7081117021276596,
+          "specificity": 0.8897718533709306,
+          "f1": 0.7102367455818607,
+          "confusion_matrix": [
+            [
+              3471,
+              430
+            ],
+            [
+              439,
+              1065
+            ]
+          ]
+        },
+        "80": {
+          "threshold_from_validation": 0.4038712680339813,
+          "accuracy": 0.795004625346901,
+          "precision": 0.6004056795131846,
+          "fracture_recall": 0.7872340425531915,
+          "specificity": 0.7980005126890541,
+          "f1": 0.6812428078250863,
+          "confusion_matrix": [
+            [
+              3113,
+              788
+            ],
+            [
+              320,
+              1184
+            ]
+          ]
+        },
+        "90": {
+          "threshold_from_validation": 0.2674417197704315,
+          "accuracy": 0.6976873265494912,
+          "precision": 0.4769503546099291,
+          "fracture_recall": 0.894281914893617,
+          "specificity": 0.6218918226095873,
+          "f1": 0.622109158186864,
+          "confusion_matrix": [
+            [
+              2426,
+              1475
+            ],
+            [
+              159,
+              1345
+            ]
+          ]
+        }
+      }
+    }
+  ],
+  "test_candidate_count": 4
+}
