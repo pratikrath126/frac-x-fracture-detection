@@ -1,6 +1,8 @@
-# FRAC-X | Fracture X-ray Demo
+# FRAC-X | Fracture X-ray Demo | https://frac-x-fracture-detection.streamlit.app
 
 A Streamlit classroom demo for a single pooled fracture classifier. The selected ImageNet-pretrained ResNet-50 uses pooled FracAtlas and BoneFract training data. Model selection and the default decision threshold are based on pooled validation accuracy.
+
+
 
 ## Run locally
 
